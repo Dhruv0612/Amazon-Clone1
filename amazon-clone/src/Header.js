@@ -15,6 +15,23 @@ function Header() {
         }
     }
 
+    if (user){
+        var a;
+        var b;
+        a=user.email;
+        b="";
+        var i;
+        for (i=0; i<a.length ; i++){
+            if(a[i]=="@"){
+                break
+            }
+            b+=a[i];
+        }
+    } else {
+        var b;
+        b="Guest";
+    }
+
     return (
         <div className="header">
             <Link to="/">
@@ -29,7 +46,7 @@ function Header() {
                 <Link to={!user && "/login"}>
                     <div onClick={handleAuthentication} className="header__option">
 
-                        <span className="header__optionLineOne">Hello Guest</span>
+                        <span className="header__optionLineOne">Hello {b}</span>
                         <span className="header__optionLineTwo">{user ? "Sign Out" : "Sign In"}</span>
 
                     </div>
