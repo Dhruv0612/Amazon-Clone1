@@ -51,6 +51,9 @@ function Payment() {
             setError(null)
             setProcessing(false)
 
+            dispatch({
+                type: "EMPTY_BASKET"
+            })
             history.replace("/orders")
         })
     }
@@ -119,7 +122,7 @@ function Payment() {
                                 value={getBasketTotal(basket)}
                                 displayType={"text"}
                                 thousandSeparator={true}
-                                prefix={"$"}
+                                prefix={"₹"}
                                 />
                                 <button disabled={processing || disabled || succeeded}>
                                     <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
